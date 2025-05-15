@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Acerca de";
+}
+
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card shadow-sm p-4" style="width: 100%; max-width: 600px; border-radius: 1rem;">
+
+        <!-- Encabezado -->
+        <h4 class="text-center fw-bold mb-3 text-primary">
+            Prueba Técnica - Pandapé
+        </h4>
+        <p class="text-muted mb-4">
+            Esta aplicación fue desarrollada como parte de una prueba técnica para evaluar conocimientos de ASP.NET Core MVC,
+            Entity Framework, principios SOLID, Clean Cod, el patrón CQRS, entre otros.
+        </p>
+
+        <!-- Sección de datos del desarrollador -->
+        <h5 class="fw-semibold mb-3">Desarrollado por:</h5>
+        <div class="px-2">
+            <ul class="list-unstyled">
+                <li class="mb-2"><strong>Nombre:</strong> Mauricio Bedoya Galeano</li>
+                <li class="mb-2"><strong>Correo:</strong> <a href="mailto:mbedgal@gmail.com">mbedgal@gmail.com</a></li>
+                <li class="mb-2"><strong>Celular:</strong> 350 208 4747</li>
+            </ul>
+        </div>
+
+        <!-- Botón -->
+        <div class="text-center mt-4">
+            <a asp-controller="Candidate" asp-action="Index" class="btn btn-outline-primary">Volver al inicio</a>
+        </div>
+    </div>
+</div>

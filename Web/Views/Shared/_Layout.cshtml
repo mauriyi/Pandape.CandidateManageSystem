@@ -1,49 +1,117 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrar Candidatos - @ViewData["Title"]</title>
+    <meta charset="utf-8" /> <!-- Codificación UTF-8 estándar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsive design -->
+    <!-- Título dinámico que incluye el contexto de la página para mejor SEO y UX -->
+    <title>@ViewData["Title"] - Administrar Candidatos</title>
+
+    <!-- Meta descripción básica para motores de búsqueda -->
+    <meta name="description" content="Aplicación de administración de candidatos desarrollada como prueba técnica para Pandapé." />
+
+    <!-- Referencia a Bootstrap, framework CSS confiable y ampliamente soportado -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <!-- Estilos propios del proyecto, versionados para evitar caching incorrecto -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Web.styles.css" asp-append-version="true" />
+
+    <style>
+        /* Pequeños ajustes visuales para mejorar jerarquía y legibilidad */
+        .navbar-brand {
+            font-weight: 600; /* Marca más visible y destacada */
+            font-size: 1.25rem; /* Tamaño adecuado para desktop y mobile */
+        }
+
+        .nav-link {
+            font-weight: 500; /* Links con buen contraste y legibilidad */
+        }
+
+        footer.footer {
+            padding: 1rem 0; /* Espaciado suficiente para no verse apelotonado */
+            background-color: #f8f9fa; /* Fondo claro, neutro para footer */
+            font-size: 0.9rem; /* Tamaño de texto menor para no competir con contenido principal */
+            color: #6c757d; /* Texto gris para indicar información secundaria */
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <!--
+          Navbar con sombra leve para separar visualmente del contenido.
+          Usamos 'navbar-expand-lg' para que la barra se colapse solo en pantallas pequeñas.
+          'bg-white' mantiene la barra limpia y profesional.
+        -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Administrar Candidatos</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <!--
+                  Link a la página principal, importante para usabilidad y navegación.
+                  Mantener consistencia en rutas para evitar errores 404.
+                -->
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    Administrar Candidatos
+                </a>
+
+                <!--
+                  Botón toggle para navegadores móviles.
+                  Aseguramos accesibilidad con atributos ARIA.
+                -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <!--
+                  Contenedor colapsable para los links del menú.
+                  Clases de bootstrap para justificar contenido y mantener responsividad.
+                -->
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <!-- Enlace a la lista de candidatos, página principal funcional -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Candidate" asp-action="Index">Inicio</a>
                         </li>
+                        <!-- Enlace a la página 'Acerca de', importante para transparencia -->
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Acerca de</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">Acerca de</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
+
+    <!--
+      Contenedor principal para el contenido dinámico de cada vista.
+      Padding inferior para evitar que el contenido quede pegado al footer.
+    -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
+    <!--
+      Footer simple, con texto claro y centrado.
+      Importante para dar contexto legal o de propiedad.
+    -->
     <footer class="border-top footer text-muted">
-        <div class="container">
+        <div class="container text-center">
             Prueba Técnica - &copy; 2025
         </div>
     </footer>
+
+    <!--
+      Scripts Javascript necesarios:
+      - JQuery para compatibilidad con plugins o scripts heredados
+      - Bootstrap Bundle incluye Popper para tooltips, dropdowns, etc.
+      - Archivo de scripts propio para funcionalidades personalizadas
+    -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Sección opcional para scripts específicos de vistas -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

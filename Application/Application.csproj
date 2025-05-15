@@ -7,4 +7,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Candidates\Commands\CreateCandidate\" />
+    <Folder Include="Features\Candidates\Commands\DeleteCandidate\" />
+    <Folder Include="Features\Candidates\Commands\UpdateCandidate\" />
+    <Folder Include="Features\Candidates\Queries\GetAllCandidates\" />
+    <Folder Include="Features\Candidates\Queries\GetCandidateById\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
 </Project>

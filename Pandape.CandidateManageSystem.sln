@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36109.1 d17.14
+VisualStudioVersion = 17.14.36109.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{B1ED2E60-CDED-4411-9A06-D0DB1265CF11}"
 EndProject
@@ -10,6 +10,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{F41590FB-536A-4924-BDBC-6C11A76609D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{5F7A17FC-1FFD-42B4-B7CB-0714D2E24218}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{340D7FD4-E311-47FE-B2AB-74AC61B20E06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pandape.CandidateManagement.Tests", "Pandape.CandidateManagement.Tests\Pandape.CandidateManagement.Tests.csproj", "{D0083462-959D-4BAA-92DF-78EEC5B8E32A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,20 @@ Global
 		{5F7A17FC-1FFD-42B4-B7CB-0714D2E24218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F7A17FC-1FFD-42B4-B7CB-0714D2E24218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F7A17FC-1FFD-42B4-B7CB-0714D2E24218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0083462-959D-4BAA-92DF-78EEC5B8E32A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0083462-959D-4BAA-92DF-78EEC5B8E32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0083462-959D-4BAA-92DF-78EEC5B8E32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0083462-959D-4BAA-92DF-78EEC5B8E32A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B1ED2E60-CDED-4411-9A06-D0DB1265CF11} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{DEC7B418-B0AF-4E1F-B720-3D8B657FCC81} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{F41590FB-536A-4924-BDBC-6C11A76609D8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5F7A17FC-1FFD-42B4-B7CB-0714D2E24218} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{D0083462-959D-4BAA-92DF-78EEC5B8E32A} = {340D7FD4-E311-47FE-B2AB-74AC61B20E06}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87CD3BE7-3A37-4B80-8092-C076F144A169}

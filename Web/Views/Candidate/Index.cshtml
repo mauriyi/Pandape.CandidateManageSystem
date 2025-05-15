@@ -1,0 +1,98 @@
+﻿@using Web.ViewModels.Candidate
+@using Web.Helpers
+@model PaginatedList<CandidateViewModel>
+
+@{
+    ViewData["Title"] = "Administrar Candidatos";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm rounded-3">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h4 class="card-title mb-0">Lista de Candidatos</h4>
+                    <p class="text-muted small mb-0">Gestiona la información de los candidatos registrados.</p>
+                </div>
+                <a class="btn btn-primary" asp-action="Create" asp-controller="Candidate">
+                    <i class="bi bi-plus-circle me-1"></i> Nuevo Candidato
+                </a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Email</th>
+                            <th>Experiencia</th>
+                            <th class="text-end">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var candidate in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://ui-avatars.com/api/?name=@candidate.Name+@candidate.Surname&background=random&rounded=true&size=40"
+                                             alt="avatar"
+                                             class="rounded-circle me-3"
+                                             width="40" height="40">
+                                        <div>
+                                            <strong>@candidate.Name @candidate.Surname</strong><br />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@candidate.Email</td>
+                                <td>
+                                    @if (candidate.Experiences?.Any() == true)
+                                    {
+                                        var total = candidate.Experiences.Count;
+                                        <span class="badge bg-primary">@total experiencia(s)</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Sin experiencia</span>
+                                    }
+                                </td>
+                                <td class="text-end">
+                                    <a asp-action="Edit" asp-controller="Candidate" asp-route-idCandidate="@candidate.IdCandidate"
+                                       class="btn btn-outline-primary btn-sm me-1">
+                                        Editar
+                                    </a>
+                                    <form method="post" asp-action="Delete" asp-route-idCandidate="@candidate.IdCandidate" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar el candidato ' + '@candidate.Name @candidate.Surname' + '?');">
+                                        <button type="submit" class="btn btn-outline-danger btn-sm">
+                                            Eliminar
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Paginación -->
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="text-muted">
+                    Mostrando página <strong>@Model.PageIndex</strong> de <strong>@Model.TotalPages</strong>
+                </div>
+                <div>
+                    @if (Model.HasPreviousPage)
+                    {
+                        <a class="btn btn-outline-secondary btn-sm me-2" href="@Url.Action("Index", new { pageNumber = Model.PageIndex - 1 })">
+                            &laquo; Anterior
+                        </a>
+                    }
+                    @if (Model.HasNextPage)
+                    {
+                        <a class="btn btn-outline-secondary btn-sm" href="@Url.Action("Index", new { pageNumber = Model.PageIndex + 1 })">
+                            Siguiente &raquo;
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

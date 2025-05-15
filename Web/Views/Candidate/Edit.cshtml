@@ -1,0 +1,132 @@
+﻿@model Web.ViewModels.Candidate.CandidateViewModel
+
+@{
+    ViewData["Title"] = "Editar Candidato";
+}
+
+<div class="container mt-5">
+    <form asp-action="Edit" method="post" class="card shadow-sm p-4">
+        <input type="hidden" asp-for="IdCandidate" />
+
+        <h4 class="mb-4">Editar Candidato</h4>
+
+        <!-- Información Personal -->
+        <div class="bg-light rounded p-3 mb-4">
+            <h5 class="text-primary mb-3"><i class="bi bi-person-lines-fill me-2"></i>Información Personal</h5>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="Name" class="form-label">Nombres</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Surname" class="form-label">Apellidos</label>
+                    <input asp-for="Surname" class="form-control" />
+                    <span asp-validation-for="Surname" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Birthdate" class="form-label">Fecha de Nacimiento</label>
+                    <input asp-for="Birthdate" type="date" class="form-control" />
+                    <span asp-validation-for="Birthdate" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Email" class="form-label">Correo Electrónico</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experiencia Laboral -->
+        <div class="bg-light rounded p-3 mb-4">
+            <h5 class="text-primary mb-3"><i class="bi bi-briefcase me-2"></i>Experiencia Laboral</h5>
+
+            <div id="experiences-container">
+                @for (int i = 0; i < Model.Experiences.Count; i++)
+                {
+                    <div class="border rounded p-3 mb-3">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Empresa</label>
+                                <input name="Experiences[@i].Company" class="form-control" value="@Model.Experiences[i].Company" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Cargo</label>
+                                <input name="Experiences[@i].Job" class="form-control" value="@Model.Experiences[i].Job" />
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Descripción</label>
+                                <textarea name="Experiences[@i].Description" class="form-control" rows="2">@Model.Experiences[i].Description</textarea>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Salario</label>
+                                <input name="Experiences[@i].Salary" type="number" step="0.01" class="form-control" value="@Model.Experiences[i].Salary" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Inicio</label>
+                                <input name="Experiences[@i].BeginDate" type="date" class="form-control" value="@Model.Experiences[i].BeginDate.ToString("yyyy-MM-dd")" />
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Fin (opcional)</label>
+                                <input name="Experiences[@i].EndDate" type="date" class="form-control" value="@(Model.Experiences[i].EndDate?.ToString("yyyy-MM-dd"))" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <button type="button" class="btn btn-outline-primary mt-3" onclick="addExperience()">+ Agregar Experiencia</button>
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-end gap-2">
+            <a asp-action="Index" class="btn btn-outline-danger">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        let index = @Model.Experiences.Count;
+
+        function addExperience() {
+            const container = document.getElementById('experiences-container');
+            const html = `
+                <div class="border rounded p-3 mb-3">
+                    <div class="row g-3">
+                        <input type="hidden" name="Experiences[${index}].IdCandidateExperience" value="0" />
+                        <div class="col-md-6">
+                            <label class="form-label">Empresa</label>
+                            <input name="Experiences[${index}].Company" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Cargo</label>
+                            <input name="Experiences[${index}].Job" class="form-control" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Descripción</label>
+                            <textarea name="Experiences[${index}].Description" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Salario</label>
+                            <input name="Experiences[${index}].Salary" type="number" step="0.01" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Inicio</label>
+                            <input name="Experiences[${index}].BeginDate" type="date" class="form-control" />
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Fin (opcional)</label>
+                            <input name="Experiences[${index}].EndDate" type="date" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', html);
+            index++;
+        }
+    </script>
+}

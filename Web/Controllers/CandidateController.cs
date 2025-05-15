@@ -36,7 +36,7 @@ namespace CandidateManagement.Web.Controllers
         /// <param name="cancellationToken">Token de cancelación para operaciones asincrónicas.</param>
         /// <returns>Vista con la lista paginada de candidatos.</returns>
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 5, CancellationToken cancellationToken = default)
-        {
+        {  
             var candidateDtos = await _mediator.Send(new GetAllCandidatesCommand(), cancellationToken);
 
             var viewModels = candidateDtos.Select(dto => new CandidateViewModel

@@ -1,9 +1,9 @@
 using Application.Features.Candidates.Commands.CreateCandidate;
 using Application.Features.Interfaces;
+using CandidateManagement.Web.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Persistence.DbContexts;
 using Persistence.Repositories;
-using Web.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,16 +35,6 @@ var app = builder.Build();
 // Se registra después de Routing para capturar errores en los controladores también
 app.UseRouting();
 app.UseMiddleware<ErrorHandlingMiddleware>();
-
-// Configuración de manejo de excepciones para producción
-if (!app.Environment.IsDevelopment())
-{
-    // Redirige a una vista de error genérica si ocurre una excepción
-    app.UseExceptionHandler("/Home/Error");
-
-    // HSTS habilita encabezados para navegación segura por HTTPS
-    app.UseHsts();
-}
 
 // Redirección automática HTTP -> HTTPS
 app.UseHttpsRedirection();

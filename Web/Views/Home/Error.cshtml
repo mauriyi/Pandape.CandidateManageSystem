@@ -1,0 +1,31 @@
+﻿@model Web.ViewModels.Error.ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="container mt-5" style="max-width: 480px;">
+    <div class="text-center p-4" style="border: 1px solid #ddd; border-radius: 8px; background-color: #fafafa;">
+        <h2 style="font-weight: 700; color: #333;">¡Ups!!!</h2>
+        <p style="color: #555; font-size: 1.1rem; margin-bottom: 1.5rem;">
+            Ocurrió un error, por favor contacta al administrador.
+        </p>
+
+        @if (Model.IsDevelopment && !string.IsNullOrEmpty(Model.Message))
+        {
+            <div class="text-start mb-3" style="font-family: monospace; font-size: 0.9rem; color: #666; background: #f5f5f5; border: 1px solid #ddd; border-radius: 6px; padding: 1rem; overflow-x:auto;">
+                <h5 style="margin-bottom: 0.5rem; color: #444;">Mensaje del error:</h5>
+                <pre>@Model.Message</pre>
+
+                <h6 style="margin-top: 1rem; color: #666;">Stack trace:</h6>
+                <pre class="small">@Model.StackTrace</pre>
+            </div>
+        }
+
+        <a href="@Url.Action("Index", "Candidate")"
+           class="btn btn-outline-primary px-4 py-2"
+           style="font-weight: 600; font-size: 1rem; border-radius: 24px;">
+            Volver al Inicio
+        </a>
+    </div>
+</div>

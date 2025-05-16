@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Candidates\Commands\UpdateCandidate\" />
     <Folder Include="Features\Candidates\Queries\" />
   </ItemGroup>
 

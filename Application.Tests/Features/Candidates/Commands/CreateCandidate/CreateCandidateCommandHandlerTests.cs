@@ -49,7 +49,7 @@ namespace Application.Tests.Features.Candidates.Commands
                 {
                     new CandidateExperienceDto
                     {
-                        Company = "Tech Co",
+                        Company = "Pandapé",
                         Job = "QA Engineer",
                         Description = "Testing y automatización",
                         Salary = 4200.50m,
@@ -87,7 +87,7 @@ namespace Application.Tests.Features.Candidates.Commands
             Assert.Single(createdCandidate.Experiences);
 
             var experience = createdCandidate.Experiences.First();
-            Assert.Equal("Tech Co", experience.Company);
+            Assert.Equal("Pandapé", experience.Company);
             Assert.Equal("QA Engineer", experience.Job);
             Assert.Equal(4200.50m, experience.Salary);
             Assert.Equal("Testing y automatización", experience.Description);

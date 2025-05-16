@@ -20,14 +20,18 @@ Esta es una prueba técnica desarrollada con ASP.NET Core MVC para gestionar inf
 
 ## 📁 Estructura del Proyecto
 
+```
 Pandape.CandidateManageSystem/
-│
-├── Application/         # Capa de aplicación: Commands, Queries, DTOs  
-├── Domain/              # Entidades del dominio 
-├── Infrastructure/      # Contexto de base de datos y configuración de EF  
-├── Web/                 # Interfaz web ASP.NET MVC (Controladores, Vistas)  
-├── Pandape.CandidateManageSystem.sln  # Archivo de solución  
-└── README.md            # Documentación del proyecto  
+├── Application/                        # Capa de aplicación: Commands, Queries, DTOs  
+├── Domain/                             # Entidades del dominio 
+├── Infrastructure/                     # Contexto de base de datos y configuración de EF  
+├── Web/                                # Interfaz web ASP.NET MVC (Controladores, Vistas)
+├── Application.Tests/                  # Pruebas unitarias de la capa Application
+├── Domain.Tests/                       # Pruebas unitarias de la capa Domain
+├── Web.Tests/                          # Pruebas unitarias de la capa Web
+├── Pandape.CandidateManageSystem.sln   # Archivo de solución  
+└── README.md                           # Documentación del proyecto  
+```
 
 ## ⚙️ Cómo Empezar
 
@@ -40,18 +44,26 @@ Pandape.CandidateManageSystem/
 
 1. Clona el repositorio:
 
-   git clone https://github.com/mauriyi/Pandape.CandidateManageSystem.git  
-   cd Pandape.CandidateManageSystem  
+   ```git clone https://github.com/mauriyi/Pandape.CandidateManageSystem.git```  
+   ```cd Pandape.CandidateManageSystem```  
 
 2. Compila el proyecto:
 
-   dotnet build  
+   ```dotnet build```  
 
 3. Ejecuta la aplicación:
 
-   dotnet run --project Web  
+   ```dotnet run --project Web```  
 
 Luego abre `https://localhost:7224` en tu navegador.
+
+## 🧪 Ejecución de Tests
+
+Las pruebas unitarias están implementadas con **xUnit** y organizadas en tres proyectos dentro de la carpeta `test`:
+
+- **Application.Tests**: Pruebas de la lógica de aplicación, comandos y consultas.  
+- **Domain.Tests**: Pruebas de las entidades y reglas de negocio del dominio.  
+- **Web.Tests**: Pruebas de los controladores y la capa de presentación.
 
 ## 🧠 Principios de Diseño
 
